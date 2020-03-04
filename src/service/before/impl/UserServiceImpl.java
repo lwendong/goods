@@ -49,6 +49,14 @@ public class UserServiceImpl implements UserService{
 		}
 		User ruser = null;
 		List<User> list = userDao.login(user);
+		Integer s = 0;
+		for (User user2 : list) {
+			s += user2.getState();
+		}
+		if(s==1) {
+			session.setAttribute("msg", "用户已被冻结！");
+			return "redirect:/toLogin";
+		}
 		if(list != null && list.size() > 0) {
 			ruser = list.get(0);
 		}
