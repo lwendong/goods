@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 
 public interface AdminTypeService {
 	
-	public String toAddType(Model model);
+	public String toAddType(Model model, Integer pageNo);
 	
 	public String addType(String typeName,String code,Model model,HttpSession session);
 	
