@@ -26,6 +26,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			update goods set inventory=inventory-#{item.num} where id=#{item.goodsId} 
 		</foreach>
 	</update>
+	<!-- 更新商品库存 -->
+	<update id="updateGoodsSellNum" parameterType="list">
+		<foreach item="item" index="index" collection="list" separator=";" >
+			update goods set sell_num=sell_num+1 where id=#{item.goodsId} 
+		</foreach>
+	</update>
 	<!-- 查询goodid num -->
 	<select id="selectGoodsByUserId" parameterType="String" resultMap="orderResultMap">
 		select goods_id,num from `order` where user_id = #{userId} and state = 0
