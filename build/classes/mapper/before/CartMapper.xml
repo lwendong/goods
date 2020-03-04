@@ -14,6 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from focus where goods_id = #{gid}  and user_id = #{uid}
 	</select>
 	
+	<delete id="nofocus" parameterType="map">
+		delete from focus where user_id=#{uid} and goods_id=#{gid}
+	</delete>
 	<!-- 是否已添加购物车 -->
 	<select id="isPutCart" parameterType="map" resultType="map">
 		select * from `order` where goods_id=#{gid}  and user_id=#{uid} and state = '0'
@@ -32,16 +35,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 更新购物车 -->
 	<update id="updateGoodsPopularityNum" parameterType="String">
 		update goods set popularity_num=popularity_num+1 where id=#{goodsId}
-	</update>
-	
-	<!-- 更新购物车 -->
-	<update id="updateGoodsInventory" parameterType="map">
-		update goods set inventory=inventory-#{num} where id=#{gid}
-	</update>
-	
-	<!-- 更新商品库存 -->
-	<update id="addGoodsInventory" parameterType="map">
-		update goods set inventory=inventory+#{num} where id=#{gid}
 	</update>
 	
 	<!-- 查询购物车 -->
