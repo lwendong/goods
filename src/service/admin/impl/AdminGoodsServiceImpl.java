@@ -6,14 +6,17 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import dao.admin.AdminGoodsDao;
 import dao.admin.AdminTypeDao;
@@ -31,28 +34,24 @@ public class AdminGoodsServiceImpl implements AdminGoodsService{
 	/**
 	 * 添加或更新
 	 */
-	public String addOrUpdateGoods(Goods goods, HttpServletRequest request, String updateAct) {
-		/*上传文件的保存位置"/logos"，该位置是指
-		workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps，
-		发布后使用*/
-		//防止文件名重名
-		String newFileName = "";
-		String fileName = goods.getLogoImage().getOriginalFilename(); 
+	public String addOrUpdateGoods(Goods goods, MultipartFile fil, HttpServletRequest request, String updateAct) {
+		//获取文件原始名
+		String fullName = fil.getOriginalFilename(); 
 		//选择了文件
-		if(fileName.length() > 0){
-			String realpath = request.getServletContext().getRealPath("img");
-			//实现文件上传
-			String fileType = fileName.substring(fileName.lastIndexOf('.'));
-			//防止文件名重名
-			newFileName = MyUtil.getStringID() + fileType;
-			goods.setImg(newFileName);
-			File targetFile = new File(realpath, newFileName); 
-			if(!targetFile.exists()){  
-	            targetFile.mkdirs();  
-	        } 
+		if(fullName.length() > 0){
+			
+			String realpath = request.getServletContext().getRealPath("/img/up/");
+			//获取文件后缀名
+			String ext = FilenameUtils.getExtension(fullName);
+			//保存图片到D:\ upload 用uuid命名文件名防止文件名相同互相覆盖
+			String fileName = UUID.randomUUID().toString().replaceAll("-", "");
+			
+			goods.setImg(fileName+"."+ext);
 			//上传 
 	        try {   
-	        	goods.getLogoImage().transferTo(targetFile);
+	        	// 将上传文件保存到服务器上指定文件路径
+				fil.transferTo(new File(realpath + fileName +"."+ ext));
+				
 	        } catch (Exception e) {  
 	            e.printStackTrace();  
 	        }  
@@ -61,16 +60,16 @@ public class AdminGoodsServiceImpl implements AdminGoodsService{
 		if("update".equals(updateAct)){//updateAct不能与act重名，因为使用了转发
 			//修改到数据库
 	       if(adminGoodsDao.updateGoodsById(goods) > 0){
-	        	return "forward:/adminGoods/selectGoods?act=updateSelect";
+	        	return "forward:/admin/selectGoods?act=updateSelect";
 	        }else{
-	        	return "/adminGoods/updateAgoods";
+	        	return "/admin/updateAgoods";
 	       }
 		}else{
 			goods.setId(MyUtil.getUUID());
 			//保存到数据库
 			if(adminGoodsDao.addGoods(goods) > 0){
 				//转发到查询的controller
-				return "forward:/adminGoods/selectGoods";
+				return "forward:/admin/selectGoods";
 			}else{
 				return "card/addCard";
 			}
