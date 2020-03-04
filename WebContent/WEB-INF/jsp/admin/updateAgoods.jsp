@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/admin/goodsdetail.css" type="text/css" rel="stylesheet">
 </head>    
 <body>
-	<form:form action="admin/addGoods" method="post" modelAttribute="goods" enctype="multipart/form-data">
+	<form:form action="admin/addAupGoods?updateAct=update" method="post" modelAttribute="goods" enctype="multipart/form-data">
 		<table>
 			<h2>| 修改商品</h2>
 			<form:hidden path="id"/>
@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 				<td class="one"><font color="red">*</font>图片:</td>
 				<td class="tow">
-					<input class="in" type="file" name="img"/>
+					<input class="in" type="file" name="fil"/>
 					<!-- 从数据库取出的文件名 -->
 					<c:if test="${goods.img != ''}">
 						<img alt="" width="50" height="50"
