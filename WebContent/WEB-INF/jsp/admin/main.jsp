@@ -41,37 +41,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 		</div>
 		<div class="manager_user">
-			<img alt="" src="<%=path%>/img/userManager.png">
-			&nbsp;&nbsp;用户管理&nbsp;&nbsp;&nbsp;&nbsp;>
+			<a href="<%=path%>/admin/userInfo" target="center">
+				<img alt="" src="<%=path%>/img/userManager.png">
+				&nbsp;&nbsp;用户管理&nbsp;&nbsp;&nbsp;&nbsp;>
+			</a>
 		</div>
 		<div class="manager_order">
-			<img alt="" src="<%=path%>/img/orderManager.png">
-			&nbsp;&nbsp;订单管理&nbsp;&nbsp;&nbsp;&nbsp;>
+			<a href="<%=path%>/admin/orderInfo" target="center">
+				<img alt="" src="<%=path%>/img/orderManager.png">
+				&nbsp;&nbsp;订单管理&nbsp;&nbsp;&nbsp;&nbsp;>
+			</a>
 		</div>
 		<div class="manager_notice">
-			<img alt="" src="<%=path%>/img/noticeManager.png">
-			&nbsp;&nbsp;公告管理&nbsp;&nbsp;&nbsp;&nbsp;>
+			<a href="<%=path%>/admin/deleteNoticeSelect" target="center">
+				<img alt="" src="<%=path%>/img/noticeManager.png">
+				&nbsp;&nbsp;公告管理&nbsp;&nbsp;&nbsp;&nbsp;>
+			</a>
 		</div>
 		<!-- <ul>
 			<li><a href="adminNotice/toAddNotice" target="center">添加公告</a></li>
 			<li><a href="adminNotice/deleteNoticeSelect" target="center">删除公告</a></li>
 		</ul>
-		<ul class="goods_list">
-			<li><a href="adminGoods/toAddGoods" target="center">添加商品</a></li>
-			<li><a href="adminGoods/selectGoods?act=deleteSelect" target="center">删除商品</a></li>
-			<li><a href="adminGoods/selectGoods?act=updateSelect" target="center">修改商品</a></li>
-			<li><a href="adminGoods/selectGoods" target="center">查询商品</a></li>
-		</ul>
-		<ul>
-			<li><a href="adminOrder/orderInfo" target="center">删除订单</a></li>
-		</ul>
-		<ul>
-			<li><a href="adminUser/userInfo" target="center">删除用户</a></li>
-		</ul>
-		<ul>
-			<li><a href="adminType/toAddType" target="center">添加类型</a></li>
-			<li><a href="adminType/toDeleteType" target="center">删除类型</a></li>
-		</ul> -->
+		 -->
 	</div>
 	<div class="content">
 		<iframe class="iframe" id="iframe" src="<%=path%>/admin/selectGoods" name="center" frameborder="0"></iframe>
