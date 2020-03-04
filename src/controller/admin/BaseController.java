@@ -1,11 +1,7 @@
 package controller.admin;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import exception.AdminLoginNoException;
 @Controller
 public class BaseController {
 	/**
