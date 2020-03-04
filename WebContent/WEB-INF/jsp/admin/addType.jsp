@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="jquery/jquery.min.js"></script>
 </head>
 <body>
+<div class="outer">
 	<form action="<%=path%>/admin/addType" method="post">
 		<h2>| 类型添加</h2>
 		类型名称: <input class="te" type="text" name="name"/>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -38,15 +39,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${goodsType.name }</td>
 					<td>${goodsType.code }</td>
 					<td>
-						<button class="dele" onclick="deleteTy(${goodsType.id})">删除</button>
-						<%-- <a onclick="deleteTy(${goodsType.id})">
+						<a href="javascript:void(0);" class="dele" onclick="deleteTy('${goodsType.id}')">
+							<img title="删除该商品" alt="" src="<%=basePath%>/img/delete.png"/>
+						</a>
+						<%-- <a onclick="deleteTy(${goodsType.id}) ">
 							<img title="删除该商品类型" alt="" src="<%=basePath%>/img/delete.png"/>
 						</a> --%>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
+		<div class="typepage">
+			&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;共${totalCount}条记录&nbsp;&nbsp;共${totalPage}页&nbsp;&nbsp;
+			第${pageNo}页&nbsp;&nbsp;
+			<c:url var="url_pre" value="admin/selectGoods">
+				<c:param name="pageNo" value="${pageNo - 1 }"/>
+			</c:url>
+			<c:url var="url_next" value="admin/selectGoods">
+				<c:param name="pageNo" value="${pageNo + 1 }"/>
+			</c:url>
+			<!-- 第一页没有上一页 -->
+			<c:if test="${pageNo != 1 }">
+				<a href="${url_pre}">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			</c:if>
+			<!-- 最后一页，没有下一页 -->
+			<c:if test="${pageNo != totalPage && totalPage != 0}">
+				<a href="${url_next}">下一页</a>
+			</c:if>
+		</div>
 	</c:if>
+</div>
 	<script type="text/javascript">
 		
 		function deleteTy(typeId){
