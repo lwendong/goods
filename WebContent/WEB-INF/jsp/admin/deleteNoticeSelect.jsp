@@ -30,11 +30,11 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 </head>
 <body>
 <div class="outer">
+	<h2>| 公告列表</h2><a class="add" href="admin/toAddNotice">添加公告</a>
 	<c:if test="${allNotices.size() == 0 }">
 		没有公告。
 	</c:if>
 	<c:if test="${allNotices.size() != 0 }">
-		<h2>| 公告列表</h2><a class="add" href="admin/toAddNotice">添加公告</a>
 		<table border="1">
 			<tr>
 				<th width="350px">ID</th>

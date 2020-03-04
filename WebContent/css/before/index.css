@@ -97,12 +97,12 @@
 /*最新商品*/
 .new_goods ul{
 	width: 800px;
-	heigth: 250px;
+	height: 250px;
 }
 .new_goods ul li{
 	list-style: none;
 	width: 180px;
-	heigth: 250px;
+	height: 250px;
 	padding: 5px 9px;
 	float:left;
 	text-align: center;
@@ -114,8 +114,7 @@
 
 /*最新商品图片*/
 .new_show{
-	display: inline-block;
-  	height: auto;
+  	height: 190px;
   	max-width: 100%;
 }
 
