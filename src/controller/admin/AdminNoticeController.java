@@ -24,15 +24,15 @@ public class AdminNoticeController extends BaseController{
 		return adminNoticeService.addNotice(notice);
 	}
 	@RequestMapping("/deleteNoticeSelect")
-	public String deleteNoticeSelect(Model model) {
-		return adminNoticeService.deleteNoticeSelect(model);
+	public String deleteNoticeSelect(Model model,Integer pageNo) {
+		return adminNoticeService.deleteNoticeSelect(model,pageNo);
 	}
-	@RequestMapping("/selectNoticeOne")
-	public String selectNoticeOne(Model model, String noticeId) {
-		return adminNoticeService.selectNoticeOne(model, noticeId);
+	@RequestMapping("/selectANotice")
+	public String selectNoticeOne(Model model, String id) {
+		return adminNoticeService.selectNoticeOne(model, id);
 	}
 	@RequestMapping("/deleteNotice")
-	public String deleteNotice(String noticeId) {
-		return adminNoticeService.deleteNotice(noticeId);
+	public String deleteNotice(String id) {
+		return adminNoticeService.deleteNotice(id);
 	}
 }
