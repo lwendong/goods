@@ -22,8 +22,12 @@ public class MyUtil {
 	 * 获得用户ID
 	 */
 	public static String getUserId(HttpSession session){
-		User ruser = (User)session.getAttribute("user");
-		return ruser.getId();
+		User user = null;
+		user = (User)session.getAttribute("user");
+		if(user == null) {
+			user = (User)session.getAttribute("auser");
+		}
+		return user.getId();
 	}
 	
 	/**
