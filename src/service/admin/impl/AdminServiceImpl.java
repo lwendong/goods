@@ -16,15 +16,14 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	private AdminDao adminDao;
-	@Autowired
-	private AdminTypeDao adminTypeDao;
+
 	
 	public String login(User User, Model model, HttpSession session) {
 		if(adminDao.login(User) != null && adminDao.login(User).size() > 0) {
 			session.setAttribute("user", User);
 			return "admin/main";
 		}
-		model.addAttribute("msg", "用户名或密码错误！");
+		model.addAttribute("m", "用户名或密码错误！");
 		return "admin/login";
 	}
 
