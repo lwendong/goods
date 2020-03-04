@@ -4,6 +4,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import po.Goods;
 public interface AdminGoodsService {
@@ -14,7 +15,7 @@ public interface AdminGoodsService {
 	
 	public Map<String, Object> deleteGoodsOne(String goodsId, Model model);
 	
-	public String addOrUpdateGoods(Goods goods, HttpServletRequest request, String updateAct);
+	public String addOrUpdateGoods(Goods goods, MultipartFile fil,HttpServletRequest request, String updateAct);
 	
 	public String selectGoods(Model model, Integer pageNo, String delAndUp);
 }
