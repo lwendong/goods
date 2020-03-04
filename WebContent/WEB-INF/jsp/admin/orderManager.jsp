@@ -39,9 +39,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<c:forEach var="n" items="${orderList}">
 		<tr onmousemove="changeColor(this)" onmouseout="changeColor1(this)">
 			<td>${n.id}</td>
-			<td>${n.userId}</td>
+			<td>${n.user_id}</td>
 			<td>${n.payment}</td>
-			<td><c:if test="${n.state == 0}" >未付款</c:if><c:if test="${n.status == 1}" >已付款</c:if></td>
+			<td><c:if test="${n.state == 0}" >未付款</c:if><c:if test="${n.state == 1}" >已付款</c:if></td>
 			<td>${n.time}</td>
 			<td>
 				<c:if test="${n.state == 0}" >
