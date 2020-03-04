@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into focus(id, goods_id, user_id,time) values (#{id}, #{gid}, #{uid},now())
 	</insert>
 	
+	
 	<!-- 是否已关注 -->
 	<select id="isFocus" parameterType="map" resultType="map">
 		select * from focus where goods_id = #{gid}  and user_id = #{uid}
@@ -42,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update goods set inventory=inventory-#{num} where id=#{gid}
 	</update>
 	
-	<!-- 更新商品库存 -->
+	<!-- 人气 -->
 	<update id="addGoodsInventory" parameterType="map">
 		update goods set inventory=inventory+#{num} where id=#{gid}
 	</update>
