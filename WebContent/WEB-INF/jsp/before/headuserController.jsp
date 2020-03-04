@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</ul>
 				<c:if test="${user!= null}">	
-					<div class="exit"><a href="exit"><spring:message code="exit"></spring:message></a></div>
+					<div class="exit"><a href="user/exit"><spring:message code="exit"></spring:message></a></div>
 				</c:if>
 			</div>
 		</div>
