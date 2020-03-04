@@ -18,7 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	//确定按钮
 	function gogo(){
 		document.loginform.submit();
-		
+		var m = '${msg}';
+		m="";
 		
 	}
 	//取消按钮
