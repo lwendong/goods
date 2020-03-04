@@ -40,13 +40,17 @@ public class AdminGoodsServiceImpl implements AdminGoodsService{
 		//选择了文件
 		if(fullName.length() > 0){
 			
-			String realpath = request.getServletContext().getRealPath("/img/up/");
+			String realpath = "D:/img/";
 			//获取文件后缀名
 			String ext = FilenameUtils.getExtension(fullName);
 			//保存图片到D:\ upload 用uuid命名文件名防止文件名相同互相覆盖
 			String fileName = UUID.randomUUID().toString().replaceAll("-", "");
 			
 			goods.setImg(fileName+"."+ext);
+			/*
+			 * File targetFile = new File(realpath, fileName); if(!targetFile.exists()){
+			 * targetFile.mkdirs(); }
+			 */
 			//上传 
 	        try {   
 	        	// 将上传文件保存到服务器上指定文件路径

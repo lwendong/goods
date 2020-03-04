@@ -4,6 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -75,14 +76,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td bgcolor="#ffffff"  align="center">${mf.name}</td>
 							<td align="center" bgcolor="#ffffff" height="60px"> <img
 									style="width: 50px; height: 50px;"
-									src="<%=path%>/img/up/${mf.img}" border="0"
+									src="<%=imgPath%>/img/up/${mf.img}" border="0"
 									title="${mf.name}" /> </td>
 							<td align="center" bgcolor="#ffffff">${mf.price}</td>
 							<td align="center" bgcolor="#ffffff">
 								<a style="text-decoration: none;" class="f6" href="<%=path%>/goodsDetail?id=${mf.id}" target="_blank"><spring:message code='goLook'></spring:message></a>
 							</td>
 							<td align="center" bgcolor="#ffffff">
-								<a style="text-decoration: none;" class="f6" href="<%=path%>/nofocus?goodsId=${mf.id}" target="_blank"><spring:message code='noFocus'></spring:message></a>
+								<a style="text-decoration: none;" class="f6" href="<%=path%>/cart/nofocus?goodsId=${mf.id}" target="_blank" onclick="return false;"><spring:message code='noFocus'></spring:message></a>
 							</td>
 						</tr>
 					</c:forEach>

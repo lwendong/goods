@@ -4,6 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
 <jsp:include page="head.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li><img class="top_img" src="img/top_${status.index+1 }.png" /></li>
 								<li class="goods_img">
 									<a href="goodsDetail?id=${sg.id }"> 
-										<img title="${sg.description }" class="samllimg" alt="" src="img/up/${sg.img}" />
+										<img title="${sg.description }" class="samllimg" alt="" src="<%=imgPath%>/img/up/${sg.img}" />
 									</a>
 								</li>
 								<li class="goods_naAndPri">
@@ -59,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li><img class="top_img" src="img/top_${status.index+1 }.png" /></li>
 								<li class="goods_img">
 								<a href="goodsDetail?id=${sg.id }"> 
-									<img title="${sg.description }" class="samllimg" alt="" src="img/up/${sg.img}" /></a></li>
+									<img title="${sg.description }" class="samllimg" alt="" src="<%=imgPath%>/img/up/${sg.img}" /></a></li>
 								<li class="goods_naAndPri">
 								<div class="hi"><p><a href="goodsDetail?id=${sg.id }">${sg.name }</a></p></div>
 								 <spring:message code="price"></spring:message>：<font class="f1"><spring:message code="moneyMark"></spring:message>${sg.price }<spring:message code="yuan"></spring:message></font><br /></li>
@@ -83,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div>
 										<p class="pic">
 											<a href="goodsDetail?id=${sg.id }">
-											<img title="${sg.description}" src="img/up/${sg.img}" /></a>
+											<img title="${sg.description}" src="<%=imgPath%>/img/up/${sg.img}" /></a>
 										</p>
 										<p class="wz">
 											<div class="hi">

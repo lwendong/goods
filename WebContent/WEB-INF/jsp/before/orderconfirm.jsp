@@ -4,6 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                  	${ce.goodsName}
 	              </td>
 	              <td align="center" bgcolor="#ffffff">
-	              	<img class="goods_img" src="<%=path%>/img/up/${ce.goodsImg}" title="${ce.goodsDescription}" />
+	              	<img class="goods_img" src="<%=imgPath%>/img/up/${ce.goodsImg}" title="${ce.goodsDescription}" />
 	              </td>
 	              <td align="center" bgcolor="#ffffff">
 	                ${ce.orderNum}

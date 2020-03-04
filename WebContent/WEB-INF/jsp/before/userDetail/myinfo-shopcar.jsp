@@ -4,6 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -63,7 +64,7 @@ window.onload = function(){
 				<tr>
 					<td class="goods_info">
 						<a class="a_text" href="goodsDetail?id=${ce.goodsId}"> 
-							<img class="goods_img" src="img/up/${ce.goodsImg}" title="${ce.goodsDescription}" />
+							<img class="goods_img" src="<%=imgPath%>/img/up/${ce.goodsImg}" title="${ce.goodsDescription}" />
 						</a><br/>
 						<a class="a_text" href="goodsDetail?id=${ce.goodsId}" class="f6">${ce.goodsName}</a>
 					</td>

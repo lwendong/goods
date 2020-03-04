@@ -4,6 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
 <jsp:include page="head.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div>
 									<p class="pic">
 										<a href="goodsDetail?id=${sg.id }">
-											<img title="${sg.description}" src="img/up/${sg.img}" />
+											<img title="${sg.description}" src="<%=imgPath%>/img/up/${sg.img}" />
 										</a>
 									</p>
 									<p class="wz">

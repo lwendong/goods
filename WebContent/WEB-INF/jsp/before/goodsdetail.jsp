@@ -6,6 +6,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
 <jsp:include page="headuserController.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -75,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="goods">
 						<div class="goodsInfo">
 							<input type="hidden" name="goodsId" value="${goods.id }"/>
-							<img src="img/up/${goods.img}" width="230px" height="230px" />
+							<img src="<%=imgPath%>/img/up/${goods.img}" width="230px" height="230px" />
 						</div>
 						<!--商品表述-->
 						<div class="goods_desc">
