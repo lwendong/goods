@@ -12,5 +12,6 @@ public interface AdminOrderDao {
 	
 	public List<Map<String,Object>> orderInfo();
 	
+	public List<Map<String,Object>> orderInfoBypage(Map<String, Object> map);
 	public int deleteOrderBase(String orderId);
 }
