@@ -104,5 +104,13 @@ public class CartServiceImpl implements CartService{
 		model.addAttribute("cartlist", list);
 		return "before/orderconfirm";
 	}
+	@Override
+	public String nofocus(Model model, String goodsId, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("uid", MyUtil.getUserId(session));
+		map.put("gid", goodsId);
+		cartDao.nofocus(map);
+		return "myinfoManager";
+	}
 	
 }
