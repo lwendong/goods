@@ -33,7 +33,7 @@ function cancel(){
 	  						<h2>登录</h2><br/><br/>
 	  						姓名：<form:input path="name" cssClass="textSize"/><br/><br/>
 	  						密码：<form:password path="password" cssClass="textSize" maxlength="20"/><br/><br/>
-	  						${msg }<br/><br/>
+	  						${m}<br/><br/>
 	  						<input class="but" type="button" value="登录" onclick="gogo()" >
 	  						&nbsp;&nbsp;&nbsp;&nbsp;
 							<input class="but" type="button" value="取消" onclick="cancel()" >
