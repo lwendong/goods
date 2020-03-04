@@ -63,9 +63,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th><spring:message code='shopImg'></spring:message></th>
 						<th><spring:message code='shopPrice'></spring:message></th>
 						<th><spring:message code='goLook'></spring:message></th>
+						<th><spring:message code='oparetion'></spring:message></th>
 					</tr>
 					<tr>
-						<td colspan="5" height="15px"
+						<td colspan="6" height="15px"
 							style="border: 0 none; background: #FFF"></td>
 					</tr> 
 					<c:forEach var="mf" items="${myFocus}"> 
@@ -79,6 +80,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td align="center" bgcolor="#ffffff">${mf.price}</td>
 							<td align="center" bgcolor="#ffffff">
 								<a style="text-decoration: none;" class="f6" href="<%=path%>/goodsDetail?id=${mf.id}" target="_blank"><spring:message code='goLook'></spring:message></a>
+							</td>
+							<td align="center" bgcolor="#ffffff">
+								<a style="text-decoration: none;" class="f6" href="<%=path%>/nofocus?goodsId=${mf.id}" target="_blank"><spring:message code='noFocus'></spring:message></a>
 							</td>
 						</tr>
 					</c:forEach>
