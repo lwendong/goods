@@ -105,12 +105,14 @@ public class CartServiceImpl implements CartService{
 		return "before/orderconfirm";
 	}
 	@Override
-	public String nofocus(Model model, String goodsId, HttpSession session) {
+	public Map<String, Object> nofocus(Model model, String goodsId, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map1 = new HashMap<String, Object>();
 		map.put("uid", MyUtil.getUserId(session));
 		map.put("gid", goodsId);
 		cartDao.nofocus(map);
-		return "myinfoManager";
+		map1.put("message", "取消成功");
+		return map1;
 	}
 	
 }

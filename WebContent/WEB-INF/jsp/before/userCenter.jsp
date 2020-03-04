@@ -83,7 +83,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 								<a style="text-decoration: none;" class="f6" href="<%=path%>/goodsDetail?id=${mf.id}" target="_blank"><spring:message code='goLook'></spring:message></a>
 							</td>
 							<td align="center" bgcolor="#ffffff">
-								<a style="text-decoration: none;" class="f6" href="<%=path%>/cart/nofocus?goodsId=${mf.id}" target="_blank" onclick="return false;"><spring:message code='noFocus'></spring:message></a>
+								<a style="text-decoration: none;" class="f6" onclick="deleteOne('${mf.id }')" href="<%=path%>/cart/nofocus?goodsId=${mf.id}" target="_blank" onclick="return false;"><spring:message code='noFocus'></spring:message></a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -91,5 +91,28 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function deleteOne(goodId){
+			debugger
+			var p ='<%=path%>';
+			if(confirm("您确定删除吗?")){
+				$.ajax({
+			        url: p+'/cart/nofocus?goodsId='+goodId,
+			        type: 'post',
+			        dateType:"json",
+			        contentType: 'application/json; charset=UTF-8',
+			        success: function (data) {
+			        	alert(data.message);
+			        	window.location.reload();
+			        },
+			        error: function (XMLHttpRequest, textStatus, errorThrown) {
+			            console.log(textStatus, errorThrown);
+			            alert("系统繁忙，请稍后再操作！");
+			        }
+			    });	
+			}
+		}
+		
+	</script>
 </body>
 </html>
