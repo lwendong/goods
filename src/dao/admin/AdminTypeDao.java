@@ -1,6 +1,7 @@
 package dao.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -13,6 +14,7 @@ import po.GoodsType;
 public interface AdminTypeDao {
 	
 	public List<GoodsType> selectGoodsType();
+	public List<Goods> selectGoodsTypeByPage(Map<String, Object> map);
 	
 	public int addType(@Param("id")String id,@Param("typeName")String typeName,@Param("code")String code);
 	
