@@ -12,8 +12,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Insert title here</title>
 </head>
 <body>
-	<h3 align="center">${notice.ntitle }</h3>
-	<p>&nbsp;&nbsp;&nbsp;&nbsp;${notice.ncontent }</p>		
-	<p align="right">${notice.ntime }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>				
+<h2>| 公告详情</h2>
+	<div style="width: 1000px;font-size:18px;margin-left:50px;">
+		<h3>标题：${notice.title }</h3>
+		<p>&nbsp;&nbsp;${notice.content }</p>	
+		<p align="right" >时间：${notice.time }</p>		
+	</div>		
+		
 </body>
 </html>
