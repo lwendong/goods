@@ -1,4 +1,5 @@
 package controller.admin;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import dao.admin.AdminTypeDao;
 import po.Goods;
+import po.GoodsType;
 import service.admin.AdminGoodsService;
 
 @Controller
@@ -19,6 +23,8 @@ public class AdminGoodsController{
 	
 	@Autowired
 	private AdminGoodsService adminGoodsService;
+	@Autowired
+	private AdminTypeDao adminTypeDao;
 	
 	@RequestMapping("/selectGoods")
 	public String selectGoods(Model model, Integer pageNo, String delAndUp) {
@@ -31,15 +37,18 @@ public class AdminGoodsController{
 	@RequestMapping("/toAddGoods")
 	public String toAddGoods(Model model){
 		model.addAttribute("goods", new Goods());
+		List<GoodsType> goodsType = adminTypeDao.selectGoodsType();
+		model.addAttribute("goodsType",goodsType);
 		return "admin/addGoods";
 	}
 	
 	/**
 	 * 添加与修改
 	 */
-	@RequestMapping("/addGoods")
-	public String addGoods(@ModelAttribute Goods goods, HttpServletRequest request, String updateAct){
-		return adminGoodsService.addOrUpdateGoods(goods, request, updateAct);
+	@RequestMapping("/addAupGoods")
+	public String addAupGoods(@ModelAttribute Goods goods,MultipartFile fil, HttpServletRequest request, String updateAct){
+		return adminGoodsService.addOrUpdateGoods(goods, fil,request, updateAct);
+		
 	}
 	/**
 	 * 跳转修改页面
