@@ -8,7 +8,7 @@ public interface AdminNoticeService {
 	
 	public String addNotice(Notice notice);
 	
-	public String deleteNoticeSelect(Model model);
+	public String deleteNoticeSelect(Model model,Integer pageNo);
 	
 	public String selectNoticeOne(Model model, String noticeId);
 	public String deleteNotice(String noticeId);
