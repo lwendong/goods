@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.before.OrderDao">
+
+ 	<resultMap type="order" id="orderResultMap">
+        <id property="userId" column="user_id" />
+        <result property="goodsId" column="goods_id" />
+        <result property="due" column="due" />
+        <result property="payment" column="payment" />
+        <result property="num" column="num" />
+        <result property="state" column="state" />
+        <result property="time" column="time"/>
+        <result property="deleted" column="deleted" />
+    </resultMap>
+
+	<!-- 添加一个订单，成功后将主键值回填给id（po类的属性）-->
+	<insert id="addorder" parameterType="order" >
+		insert into `order` (id,user_id,goods_id,due,payment, num, state, time) values (#{id},#{goodsId},#{due},#{due},#{payment}, #{num}, 0, now())
+	</insert>
+	
+	<!-- 更新商品库存 -->
+	<update id="updateStore" parameterType="list">
+		<foreach item="item" index="index" collection="list" separator=";" >
+			update goods set inventory=inventory-#{item.num} where id=#{item.goodsId} 
+		</foreach>
+	</update>
+	<!-- 查询goodid num -->
+	<select id="selectGoodsByUserId" parameterType="String" resultMap="orderResultMap">
+		select goods_id,num from `order` where user_id = #{userId} and state = 0
+	</select>
+	<!-- 支付订单 -->
+	<update id="pay" parameterType="String">
+		update `order` set state = 1 where user_id = #{userId}
+	</update>
+</mapper>

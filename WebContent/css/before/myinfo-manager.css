@@ -1,0 +1,38 @@
+.modal{
+	margin-top:30px;
+}
+.modal-body{
+	margin-left:30px;
+}
+.modal-body table td{
+	padding-top:30px;
+	font-size:18px;
+}
+.table_one{
+	text-align:right;
+	padding-top:30px;
+}
+.form-control{
+	width:160px;
+	font-size:18px;
+	 outline:none;
+	 border:none;
+	 border-bottom:1px solid #C1C1C1;
+}
+.btn-info{
+	width: 150px;
+	height: 30px;
+	background-color: #FF2832;
+	color: #fff;
+	font-size:16px;
+	margin: 35px 0 0 32px;
+	border:none;
+}
+.btn{
+	width: 50px;
+	height: 30px;
+	background-color: #FF2832;
+	color: #fff;
+	font-size:16px;
+	border:none;
+}

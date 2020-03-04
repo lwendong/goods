@@ -1,0 +1,63 @@
+/*注册标题字体*/
+.re_lo{
+	margin-top: 30px;
+}
+
+.regist{
+	width:900px;	
+}
+/*表格位置*/
+.regist table{
+	margin: 50px 0 0 100px;
+}
+/*表格第一列样式*/
+.one_list{
+	text-align: right;
+	width:200px;	
+}
+/*表格td*/
+.regist table tr td{
+	width:900px;
+}
+/*括号中提示*/
+.prompt{
+	font-size: 14px;
+	padding:5px 0;
+	color: red; 
+}
+/*输入框样式 */
+.reg_input{
+	width: 270px;
+	height: 25px;
+	border: none;
+	border-bottom: 1px solid #C1C1C1;
+	outline:none;
+	font-size: 18px;
+}
+/*验证码图片片大小*/
+.code_img{
+	width: 90px;
+	height: 42px;
+}
+/*星字符*/
+.star{
+	color: red;
+}
+/*注册按钮的位置*/
+.subm{
+	padding: 30px 0 0 69px;
+}
+/*注册按钮样式*/
+.reg_submit{
+	width: 150px;
+	height: 30px;
+	background-color: #FF2832;
+	border: none;
+	color: #fff;
+}
+.msg{
+	margin:0;
+	text-align:center;
+	width:150px;
+	color: #FF2832;
+}

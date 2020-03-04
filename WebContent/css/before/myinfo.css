@@ -1,0 +1,12 @@
+.myinfo{
+	width:600px;
+}
+.myinfo tr th{
+	text-align:right;
+	width:200px;
+}
+.myinfo tr td{
+	text-align:left;
+	width:350px;
+	padding-left:50px;
+}

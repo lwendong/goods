@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans 
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+        ">  
+	<!-- 附加props配置文件 -->
+	<context:property-placeholder location="classpath:config/db.properties" />
+    <!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+			<property name="driverClassName" value="${db.driverClassName}" />
+			<property name="url" value="${db.url}" />
+			<property name="username" value="${db.username}" />
+			<property name="password" value="${db.password}" />
+			<!-- 最大连接数 -->
+			<property name="maxTotal" value="${db.maxTotal}"/>
+			<!-- 最大空闲连接数 -->
+			<property name="maxIdle" value="${db.maxIdle}"/>
+			<!-- 初始化连接数 -->
+			<property name="initialSize" value="${db.initialSize}"/>
+	</bean>
+	<!-- 添加事务支持 -->
+	<bean id="txManager"   
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">   
+        <property name="dataSource" ref="dataSource" />   
+    </bean> 
+    <!-- 开启事务注解-->
+	<tx:annotation-driven transaction-manager="txManager" />
+ 	<!-- 配置MyBatis工厂，同时指定数据源，并与MyBatis完美整合 -->  
+ 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />  
+        <!-- configLocation的属性值为MyBatis的核心配置文件 -->
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+    </bean>  
+	<!--Mapper代理开发，使用Spring自动扫描MyBatis的接口并装配
+ 	（Spring将指定包中所有被@Mapper注解标注的接口自动装配为MyBatis的映射接口）  --> 
+     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+     	<!-- mybatis-spring组件的扫描器 ，必须写全dao的包名，且只能扫描一个dao包-->
+     	<property name="basePackage" value="dao"/>
+     	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+     </bean>
+     <!-- 指定需要扫描的包（包括子包），使注解生效。dao包在mybatis-spring组件中已经扫描，这里不再需要扫描-->
+	<context:component-scan base-package="controller" />
+	<context:component-scan base-package="service"/>
+	<mvc:annotation-driven />
+    <!-- 静态资源需要单独处理，不需要dispatcher servlet -->  
+    <!-- 配置静态资源 默认servlet配置  允许使用"/"做整体映射 等-->
+    <mvc:resources location="/css/" mapping="/css/**"></mvc:resources> 
+    <mvc:resources location="/jquery/" mapping="/jquery/**"></mvc:resources>
+    <mvc:resources location="/img/up/" mapping="/img/up/**"></mvc:resources> 
+	<!-- 配置视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		id="internalResourceViewResolver">
+		<!-- 前缀 -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"  
+        p:defaultEncoding="UTF-8"  
+        p:maxUploadSize="5400000"  
+        p:uploadTempDir="fileUpload/temp" 
+     >
+    </bean> 
+	<!-- 托管MyExceptionHandler -->
+	<bean class="exception.MyExceptionHandler"/>
+	
+	<!-- 国际化配置start -->
+  	<!-- 配置SessionLocaleResolver用于将Locale对象存储于Session中供后续使用 -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="defaultEncoding" value="UTF-8" />
+        <!-- 表示语言配置文件是以language开头的文件（language_zh_CN.properties）-->
+        <property name="basename" value="config.language"/>
+        <!-- 语言区域里没有找到对应的国际化文件时，默认使用language.properties文件-->
+        <property name="useCodeAsDefaultMessage" value="true" />
+    </bean>
+    
+    <!-- 主要用于获取请求中的locale信息，将其转为Locale对像，获取LocaleResolver对象-->
+    <mvc:interceptors>
+        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" >
+        	<property name="paramName" value="lang" />
+        </bean>
+    </mvc:interceptors>
+    <!-- 国际化配置end -->
+    
+    <!--配置拦截器, 多个拦截器,顺序执行 -->
+    <mvc:interceptors> 
+		<mvc:interceptor>
+			<mvc:mapping path="/**" /> 
+			<!-- 需排除拦截的地址 -->  
+			<mvc:exclude-mapping path="/toRegister"/>
+			<mvc:exclude-mapping path="/toLogin"/>
+			<mvc:exclude-mapping path="/selectANotice"/>
+			<mvc:exclude-mapping path="/before"/>
+			<mvc:exclude-mapping path="/search"/>
+			<mvc:exclude-mapping path="/goodsbyType"/>
+			<mvc:exclude-mapping path="/validateCode"/>
+			<mvc:exclude-mapping path="/user/login"/>
+			<mvc:exclude-mapping path="/user/login"/>
+			<mvc:exclude-mapping path="/admin/*"/>
+			<mvc:exclude-mapping path="/admin"/>
+			<bean id="commonInterceptor" class="interceptor.MyInterceptor"></bean>
+		</mvc:interceptor> 
+    </mvc:interceptors>
+</beans>

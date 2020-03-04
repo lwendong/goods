@@ -1,0 +1,34 @@
+table{
+	border:0;
+	border-collapse: collapse;
+}
+table tr{
+	border:1px solid #343E4A;
+}
+table th{
+	width: 400px;
+    height:50px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+table td{
+	width: 400px;
+    height:50px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+.te{
+	width: 300px;
+    height: 30px;
+}
+.but{
+	width: 100px;
+    height: 33px;
+    background-color: #62AAFF;
+    border: 0;
+    font-size: 16px;
+    text-align:center;
+    color: #fff;
+}

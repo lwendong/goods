@@ -1,0 +1,61 @@
+.one,.one_img{
+    width: 130px;
+    height:50px;
+    text-align: right;
+    letter-spacing: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.tow,.tow_img{
+	width: 1390px;
+    padding-left: 30px;
+    font-size: 18px;
+}
+.one_img{
+	height:300px;
+}
+table{
+	border:0;
+	border-collapse: collapse;
+}
+table tr{
+	border:1px solid #343E4A;
+}
+.upd{
+	width: 100px;
+    height: 24px;
+    background-color: #62AAFF;
+    border: 0;
+    font-size: 16px;
+    text-align:center;
+    margin-top:30px;
+}
+a:link { 
+color: #fff; 
+text-decoration: none; 
+} 
+a:visited { 
+color: #fff; 
+text-decoration: none; 
+} 
+
+
+/*ÐÞ¸ÄÉÌÆ·*/
+.in{
+	width: 300px;
+    height: 30px;
+    font-size: 18px;
+}
+.but{
+	padding-left:70px;
+}
+.but1{
+	width: 100px;
+    height: 30px;
+    background-color: #62AAFF;
+    border: 0;
+    font-size: 16px;
+    text-align:center;
+    margin-top:30px;
+    color: #fff; 
+}

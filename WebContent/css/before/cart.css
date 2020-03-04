@@ -1,0 +1,50 @@
+.goods_info_table{
+	text-align:center;
+	background-color: #dddddd;
+	width: 99%;
+	border: 0;
+}
+.cart_space{
+	border: 0 none; 
+	background: #FFF;
+	height: 15px;
+}
+.goods_info,.goods_info_115,.goods_info_185{
+	text-align:center;
+	background-color: #ffffff;
+}
+.goods_info_115{
+	width: 115px;
+}
+.goods_info_185{
+	width: 185px;	
+}
+.goods_img{
+	width: 100px; 
+	height: 100px;
+	border: 0;
+}
+.a_text,.a_text_check{
+	text-decoration: none;
+}
+.a_text_check{
+	cursor: pointer;
+}
+.goods_info_right{
+	text-align:right;
+	background-color: #ffffff;
+}
+.total{
+	color: #a60401; 
+	font-size: 13px; 
+	font-weight: bold; 
+	letter-spacing: 0px;
+}
+.bnt_clear{
+	color: #fff;
+	border: 0;
+	background-color: #FF2832;
+	width: 100px;
+	height: 30px;
+}
+

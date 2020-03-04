@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.before.CartDao">
+
+	<!-- 关注商品 -->
+	<insert id="focus" parameterType="map">
+		insert into focus(id, goods_id, user_id,time) values (#{id}, #{gid}, #{uid},now())
+	</insert>
+	
+	<!-- 是否已关注 -->
+	<select id="isFocus" parameterType="map" resultType="map">
+		select * from focus where goods_id = #{gid}  and user_id = #{uid}
+	</select>
+	
+	<!-- 是否已添加购物车 -->
+	<select id="isPutCart" parameterType="map" resultType="map">
+		select * from `order` where goods_id=#{gid}  and user_id=#{uid} and state = '0'
+	</select>
+	
+	<!-- 添加购物车 -->
+	<insert id="putCart" parameterType="map">
+		insert into `order`(id, user_id,goods_id,due,payment,num,time) values (#{id}, #{uid}, #{gid}, #{price}, #{price},#{num}, now() )
+	</insert>
+	
+	<!-- 更新购物车 -->
+	<update id="updateCart" parameterType="map">
+		update `order` set num=num+#{num} where user_id=#{uid} and goods_id=#{gid}
+	</update>
+	
+	<!-- 更新购物车 -->
+	<update id="updateGoodsPopularityNum" parameterType="String">
+		update goods set popularity_num=popularity_num+1 where id=#{goodsId}
+	</update>
+	
+	<!-- 更新购物车 -->
+	<update id="updateGoodsInventory" parameterType="map">
+		update goods set inventory=inventory-#{num} where id=#{gid}
+	</update>
+	
+	<!-- 更新商品库存 -->
+	<update id="addGoodsInventory" parameterType="map">
+		update goods set inventory=inventory+#{num} where id=#{gid}
+	</update>
+	
+	<!-- 查询购物车 -->
+	<select id="selectCart" parameterType="String" resultType="map">
+		select o.id as id,g.id as goodsId,g.name as goodsName,g.description as goodsDescription,g.img as goodsImg,g.price as goodsPrice,o.time as orderTime,o.num as orderNum,o.num * o.due as smallsum from `order` o,goods g where o.user_id = #{userId} and o.goods_id = g.id and o.state = 0 
+		order by o.time desc 
+	</select>
+	
+	<!-- 删除购物车 -->
+	<delete id="deleteGoodsOne" parameterType="map">
+		delete from `order` where user_id=#{uid} and goods_id=#{gid}
+	</delete>
+	
+	<!-- 清空购物车 -->
+	<delete id="clear" parameterType="String">
+		delete from `order` where user_id=#{uid} and state = 0
+	</delete>
+</mapper>

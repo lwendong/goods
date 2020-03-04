@@ -1,0 +1,163 @@
+/* 外框 */
+.index{
+	padding: 0; 
+	margin: 0 auto;
+	width: 100%; 
+}
+/*中间内容布局*/
+.index_center{
+	width: 70%; 
+}
+/*中间内容左部分*/
+.index_center_left{
+	float: left;
+	width: 14%;
+}
+/*销售和人气排行的logo*/
+.sale_font{
+	float:left;
+	height: 35px;
+	width: 86%;
+	padding: 9px 0px 1px 27px;
+	background-color: #EFF4FA;
+	cursor:pointer;
+}
+/*图标和文字保持一行*/
+.h{
+	float:left;
+}
+.sa{
+	float:left;
+}
+/*销售ul li列*/
+.sale ul li{
+	float: left;
+	height: 70px;
+	max-width: 82px;
+	padding-left:10px;
+	line-height:30px;
+	list-style: none; 
+}
+/*排名图标*/
+.top_img{
+	padding-top: 18px; 
+	width: 20x;
+	height: 20px;
+}
+/*商品内容文字设置*/
+.goods_naAndPri{
+	font-size:12px;
+}
+/*商品名称超链接设置*/
+.goods_naAndPri a:link{
+	text-decoration: none; 
+	color: #7B7B7B;
+	font-size: 14px;
+}
+.f1{
+	color: #FF2832;
+}
+/*商品图片设置大小  缩略图*/
+.samllimg{
+	width: 50px;
+	height: 60px; 
+}
+/*人气排行的ul li列*/
+.popular ul li{
+	float: left;
+	height: 70px;
+	padding-left:10px;
+	line-height:30px;
+	max-width: 82px;
+	list-style: none; 
+}
+
+
+/*index 中间内容中间部分 */
+.index_center_middle{
+	float: left;
+	width: 60%;
+	border: solid 1px #FF2832;
+	border-top: none;
+}
+/*设置中间图片大小*/
+.middle_img{
+	width: 797px;
+    height: 330px;
+    margin:0px 1px;
+}
+/*最新商品  顶部设置*/
+.new_title{
+	width: 99%;
+	height:30px;
+	padding: 5px 0 0 10px;
+	background-color: #FF2832;
+	color: #fff;
+}
+/*最新商品*/
+.new_goods ul{
+	width: 800px;
+	heigth: 250px;
+}
+.new_goods ul li{
+	list-style: none;
+	width: 180px;
+	heigth: 250px;
+	padding: 5px 9px;
+	float:left;
+	text-align: center;
+}
+.new_goods ul li a:link{
+	text-decoration: none; 
+	color: #7B7B7B; 
+}
+
+/*最新商品图片*/
+.new_show{
+	display: inline-block;
+  	height: auto;
+  	max-width: 100%;
+}
+
+
+/*index 中间内容右部分  公告栏*/
+.index_center_right{
+	/* background-color:pink; */
+	float: left;
+	width: 344px;
+	height: 600px; 
+}
+.notice{
+	width: 100%;
+	margin-left:0px;
+}
+/*公告栏标题*/
+.notice_title{
+	text-align: center;
+	width: 100%;
+	padding: 11px 0px;
+	background-color: #EFF4FA;
+}
+/*公告列表*/
+.notice_con ul li{
+	margin-left:28px;
+	padding-top:20px;
+	font-size:19px;
+	text-overflow:ellipsis;
+	border-bottom:2px solid #EFF4FA;
+}
+
+.hi{
+	white-space:nowrap;/*规定段落中的文本不进行换行*/
+	overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
+	text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
+}
+.notice_con ul li a:link{
+	text-decoration: none; 
+	
+	color: #7B7B7B;
+}
+.notice_con ul li a:hover{
+	text-decoration: none; 
+	color: #FF2832;
+}

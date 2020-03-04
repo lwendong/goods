@@ -1,0 +1,53 @@
+/*用户中心的外层div*/
+.list{
+	width: 100%;
+}
+/*红色框*/
+.line{
+	width:200%;
+	height:50px;
+	background-color: #FF2832;
+	margin-left:-500px;
+}
+/*上下两个模块外层div*/
+.list-group{
+	width:1200px;
+	background-color: white;
+	float: top;
+}
+/*上模块  目录*/
+.list-top{
+	margin-left: 130px;
+}
+/*ul列表设置*/
+/*返回首页设置*/
+.list_return{
+	float: left;
+	height:50px;
+	text-align: center;
+	list-style:none;
+	padding-top:10px;
+}
+.list_li{
+	float: left;
+	height:35px;
+	width: 150px;
+	font-size:18px;
+	text-align: center;
+	list-style:none;
+	padding-top:15px;
+	color: #fff;
+}
+/*目录超链接设置*/
+.list-top ul li a:link,.list-top ul li a:visited{
+	color: #fff;
+	text-decoration: none;
+}
+.order_list{
+	height:220px; 
+	overflow-y:scroll;
+}
+.nFlowBox{
+	height:414px; 
+	overflow-y:scroll;
+}

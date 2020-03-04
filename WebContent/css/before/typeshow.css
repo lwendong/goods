@@ -1,0 +1,52 @@
+/* 外框 */
+.index{
+	padding: 0; 
+	margin: 0 auto;
+	width: 100%; 
+}
+/*中间内容布局*/
+.index_center{
+	width: 70%; 
+}
+
+/*index 中间内容中间部分 */
+.index_center_middle{
+	float: left;
+	width: 100%;
+	border: none;
+}
+
+/*最新商品*/
+.new_goods ul{
+	width: 100%;
+	float: left;
+	margin-top:30px;
+}
+.new_goods ul li{
+	list-style: none;
+	width: 180px;
+	heigth: 250px;
+	padding: 5px 9px;
+	float:left;
+	text-align: center;
+}
+.new_goods ul li a:link{
+	text-decoration: none; 
+	color: #7B7B7B; 
+}
+
+/*最新商品图片*/
+.new_show{
+	display: inline-block;
+  	height: auto;
+  	max-width: 100%;
+}
+
+
+
+.hi{
+	white-space:nowrap;/*规定段落中的文本不进行换行*/
+	overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
+	text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
+}
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- com.dao.AdminTypeDao对应Dao接口 -->
+
+<mapper namespace="dao.admin.AdminTypeDao">
+	<resultMap id="goodsTypeMap" type="po.GoodsType">
+	    <id column="id"  property="id" />
+	    <result column="code"  property="code" />
+	    <result column="name"  property="name" />
+	    <result column="deleted"  property="deleted" />
+	</resultMap>
+
+	<!-- 查询类型信息 -->
+	<select id="selectGoodsType"  resultMap="goodsTypeMap" >
+		select * from type
+	</select>
+	
+	<insert id="addType">
+		insert into type (id,code, name,time,update_time) values (#{id},#{code}, #{typeName},now(),now())
+	</insert>
+	
+	<delete id="deleteType" parameterType="String">
+		delete from type where id = #{goodTypeId}
+	</delete>
+	
+	<select id="selectGoodsByType" resultType="Goods" parameterType="String">
+		select * from goods where type_code=#{code}
+	</select>
+</mapper>

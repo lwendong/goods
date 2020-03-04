@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.before.IndexDao">
+
+	<!-- 查询销售排行 -->
+	<select id="getSaleOrder"  resultType="Goods">
+		select * from goods order by sell_num desc limit 5
+	</select>
+	
+	<!-- 人气排行 -->
+	<select id="getFocusOrder" resultType="map">
+		select * from goods order by popularity_num desc limit 5
+	</select>
+	
+	<!-- 公告 -->
+	<select id="selectNotice" resultType="Notice">
+		select * from notice order by time desc
+	</select>
+	
+	<!-- 最新商品 -->
+	<select id="getLastedGoods" resultType="Goods" >
+		select * from goods order by create_time desc limit 4
+	</select>
+	
+	<!-- 根据id查询一个商品 -->
+	<select id="selectGoodsById"  resultType="Goods" parameterType="String">
+		select g.id id,g.name name,g.description description,g.img img,g.inventory inventory,g.price price,t.name typeName 
+		from goods g left join type t on g.type_code=t.code where g.id = #{goodsId} 
+	</select>
+	
+	<!-- 首页搜索 -->
+	<select id="search" resultType="Goods" parameterType="String">
+		select * from goods where name like concat('%',#{mykey},'%')
+	</select>
+	
+	<!-- 类型查商品 -->
+	<select id="selectGoodsByType" resultType="Goods" parameterType="String">
+		select * from goods where type_code=#{typeCode}
+	</select>
+</mapper>
