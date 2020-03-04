@@ -8,6 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from notice
 	</select>
 	
+	<select id="deleteNoticeSelectBypage"  resultType="Notice" parameterType="map">
+		select * from notice order by time limit #{pageNo}, #{pageSize}
+	</select>
+	
+	
 	<insert id="addNotice" parameterType="Notice">
 		insert into notice (id,title,content,time) 
 		values (#{id},#{title},#{content},now())
