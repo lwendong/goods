@@ -19,8 +19,8 @@ public class AdminServiceImpl implements AdminService{
 
 	
 	public String login(User User, Model model, HttpSession session) {
-		if(adminDao.login(User) != null && adminDao.login(User).size() > 0) {
-			session.setAttribute("user", User);
+		if(adminDao.login(User) != null && adminDao.login(User).size() > 0) {);
+			session.setAttribute("auser", User);
 			return "admin/main";
 		}
 		model.addAttribute("m", "用户名或密码错误！");
