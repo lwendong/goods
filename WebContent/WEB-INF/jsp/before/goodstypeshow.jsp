@@ -27,7 +27,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 								<div>
 									<p class="pic">
 										<a href="goodsDetail?id=${sg.id }">
-											<img title="${sg.description}" src="<%=imgPath%>/img/up/${sg.img}" />
+											<img class="new_show" title="${sg.description}" src="<%=imgPath%>/img/up/${sg.img}" />
 										</a>
 									</p>
 									<p class="wz">

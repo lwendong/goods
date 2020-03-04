@@ -35,7 +35,7 @@
 	height: 70px;
 	max-width: 82px;
 	padding-left:10px;
-	line-height:30px;
+	line-height:20px;
 	list-style: none; 
 }
 /*排名图标*/
@@ -56,6 +56,10 @@
 }
 .f1{
 	color: #FF2832;
+	width:10px;
+	white-space:nowrap;/*规定段落中的文本不进行换行*/
+	overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
+	text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
 }
 /*商品图片设置大小  缩略图*/
 .samllimg{
@@ -67,7 +71,7 @@
 	float: left;
 	height: 70px;
 	padding-left:10px;
-	line-height:30px;
+	line-height:20px;
 	max-width: 82px;
 	list-style: none; 
 }

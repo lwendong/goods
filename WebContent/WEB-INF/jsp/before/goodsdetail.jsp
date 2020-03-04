@@ -17,47 +17,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 <script src="<%=path%>/jquery/jquery.min.js"></script>
 <link href="<%=path%>/css/before/usercontroller.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/before/goodsdetail.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-	function goCart() {
-		sessionStorage.setItem("jump", "cart");
-		document.putcartform.submit();
-	}
-	function gofocus(gno) {
-		window.location.href = "/shop/cart/focus?goodsId=" + gno;
-	}
-	var baselocation='<%=basePath%>';
-	
-	var goodsId='${goods.id }';
-	function submitInfo(){
-		var data=$("#textareaComment").val();
-		var commentdata={};
-		if(data!=null){
-			commentdata.comment = data;
-			commentdata.goodsId = goodsId;
-			$.ajax({
-		        url: baselocation + 'addComment',
-		        type: 'post',
-		        dateType:"json",
-		        data:JSON.stringify(commentdata),
-		        contentType: 'application/json; charset=UTF-8',
-		        complete:function(XMLHttpRequest, textStatus) {
-		    			// 通过XMLHttpRequest取得响应头，sessionstatus
-		                var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus");
-		                if (sessionstatus == "TIMEOUT") {
-		                    var win = window;
-		                    while (win != win.top){
-		                        win = win.top;
-		                    }
-		                    win.location.href= XMLHttpRequest.getResponseHeader("CONTEXTPATH");
-		                }else{
-		                	window.location.reload();
-		                }
-	            }
-		    });	
-			
-		}
-	}
-</script>
+
 </head>
 <body>
 <div class="list">
@@ -76,7 +36,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 					<div class="goods">
 						<div class="goodsInfo">
 							<input type="hidden" name="goodsId" value="${goods.id }"/>
-							<img src="<%=imgPath%>/img/up/${goods.img}" width="230px" height="230px" />
+							<img src="<%=imgPath%>img/up/${goods.img}" width="230px" height="230px" />
 						</div>
 						<!--商品表述-->
 						<div class="goods_desc">
@@ -134,5 +94,47 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	function goCart() {
+		debugger
+		sessionStorage.setItem("jump", "cart");
+		document.putcartform.submit();
+	}
+	function gofocus(gno) {
+		window.location.href = "/shop/cart/focus?goodsId=" + gno;
+	}
+	var baselocation='<%=basePath%>';
+	
+	var goodsId='${goods.id }';
+	function submitInfo(){
+		var data=$("#textareaComment").val();
+		var commentdata={};
+		if(data!=null){
+			commentdata.comment = data;
+			commentdata.goodsId = goodsId;
+			$.ajax({
+		        url: baselocation + 'addComment',
+		        type: 'post',
+		        dateType:"json",
+		        data:JSON.stringify(commentdata),
+		        contentType: 'application/json; charset=UTF-8',
+		        complete:function(XMLHttpRequest, textStatus) {
+		    			// 通过XMLHttpRequest取得响应头，sessionstatus
+		                var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus");
+		                if (sessionstatus == "TIMEOUT") {
+		                    var win = window;
+		                    while (win != win.top){
+		                        win = win.top;
+		                    }
+		                    win.location.href= XMLHttpRequest.getResponseHeader("CONTEXTPATH");
+		                }else{
+		                	window.location.reload();
+		                }
+	            }
+		    });	
+			
+		}
+	}
+</script>
 </body>
 </html>
