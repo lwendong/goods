@@ -16,8 +16,8 @@ public class AdminTypeController extends BaseController{
 	private AdminTypeService adminTypeService;
 	
 	@RequestMapping("/toAddType")
-	public String toAddType(Model model) {
-		return adminTypeService.toAddType(model);
+	public String toAddType(Model model,Integer pageNo) {
+		return adminTypeService.toAddType(model,pageNo);
 	}
 	
 	/**
