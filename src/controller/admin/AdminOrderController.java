@@ -15,12 +15,12 @@ public class AdminOrderController extends BaseController{
 	private AdminOrderService adminOrderService;
 	
 	@RequestMapping("/orderInfo")
-	public String orderInfo(Model model) {
-		return adminOrderService.orderInfo(model);
+	public String orderInfo(Model model,Integer pageNo) {
+		return adminOrderService.orderInfo(model,pageNo);
 	}
 	
 	@RequestMapping("/deleteorderManager")
-	public String deleteorderManager(String orderId) {
-		return adminOrderService.deleteorderManager(orderId);
+	public String deleteorderManager(String id) {
+		return adminOrderService.deleteorderManager(id);
 	}
 }
