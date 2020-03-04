@@ -9,16 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
   <base href="<%=basePath%>">
     <title>selectGoods.jsp</title>
-	<link href="css/admin/common.css" type="text/css" rel="stylesheet">
-	<style type="text/css">
-		table{
-			text-align: center;
-			border-collapse: collapse;
-		}
-		.bgcolor{
-		  	background-color: #F08080;
-		}
-	</style>
+	<link href="css/admin/goods.css" type="text/css" rel="stylesheet">
+	
 	<script type="text/javascript">
 		function changeColor(obj){
 			obj.className = "bgcolor";
@@ -30,36 +22,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
   		function checkDel(id){
   			if(window.confirm("是否删除该公告？")){
-  				window.location.href = "/eBusiness/adminNotice/deleteNotice?id="+id;
+  				window.location.href = "/shop/admin/deleteNotice?id="+id;
   			}
   		}
   </script>
 </head>
 <body>
+<div class="outer">
 	<c:if test="${allNotices.size() == 0 }">
-		您还没有商品。
+		没有公告。
 	</c:if>
 	<c:if test="${allNotices.size() != 0 }">
-		<table border="1" bordercolor="PaleGreen">
+		<h2>| 公告列表</h2><a class="add" href="admin/toAddNotice">添加公告</a>
+		<table border="1">
 			<tr>
-				<th width="200px">ID</th>
-				<th width="200px">标题</th>
-				<th width="200px">时间</th>
+				<th width="350px">ID</th>
+				<th width="650px">标题</th>
+				<th width="300px">时间</th>
 				<th width="100px">详情</th>
 				<th width="100px">操作</th>
 			</tr>
 			<c:forEach items="${allNotices }" var="notice">
 				<tr onmousemove="changeColor(this)" onmouseout="changeColor1(this)">
 					<td>${notice.id }</td>
-					<td>${notice.ntitle }</td>
-					<td>${notice.ntime }</td>
-					<td><a href="adminNotice/selectANotice?id=${notice.id }" target="_blank">详情</a></td>
+					<td>${notice.title }</td>
+					<td>${notice.time }</td>
+					<td><a href="admin/selectANotice?id=${notice.id }" target="_self">详情</a></td>
 					<td>
-						<a href="javascript:checkDel('${notice.id }')">删除</a>
+						<a href="javascript:checkDel('${notice.id }')">
+							<img title="删除该公告" alt="" src="<%=basePath%>/img/delete.png"/>
+						</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
+		<div class="page">
+			&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;共${totalCount}条记录&nbsp;&nbsp;共${totalPage}页&nbsp;&nbsp;
+			第${pageNo}页&nbsp;&nbsp;
+			<c:url var="url_pre" value="admin/selectGoods">
+				<c:param name="pageNo" value="${pageNo - 1 }"/>
+			</c:url>
+			<c:url var="url_next" value="admin/selectGoods">
+				<c:param name="pageNo" value="${pageNo + 1 }"/>
+			</c:url>
+			<!-- 第一页没有上一页 -->
+			<c:if test="${pageNo != 1 }">
+				<a href="${url_pre}">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			</c:if>
+			<!-- 最后一页，没有下一页 -->
+			<c:if test="${pageNo != totalPage && totalPage != 0}">
+				<a href="${url_next}">下一页</a>
+			</c:if>
+		</div>
 	</c:if>
+</div>
 </body>
 </html>
