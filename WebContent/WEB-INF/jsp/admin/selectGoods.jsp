@@ -11,11 +11,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <base href="<%=basePath%>">
     <title>商品管理</title>
 	<link href="<%=basePath%>css/admin/goods.css" type="text/css" rel="stylesheet">
-	<script src="<%=basePath%>/jquery/jquery.min.js"></script>
+	<script src="<%=basePath%>jquery/jquery.min.js"></script>
 </head>
 <body>
 <div class="outer">
-	<h2>| 商品列表</h2>
+	<h2>| 商品列表</h2><a class="add" href="admin/toAddGoods">添加商品</a>
 	<c:if test="${allGoods.size() == 0 }">
 		您还没有商品。
 	</c:if>
@@ -39,11 +39,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${goods.price }</td>
 					<td>${goods.inventory }</td>
 					<td><img alt="" width="50" height="50"
-					src="<%=basePath%>/img/up/${goods.img}"/></td>
+					src="<%=basePath%>img/up/${goods.img}"/></td>
 					<td><a href="<%=basePath%>admin/selectGoodsOne?id=${goods.id }" target="_self">详情</a></td>
 					<td>
-						<a onclick="deleteOne(${goods.id })" target="_blank">
-							<img title="删除该商品" alt="" src="<%=basePath%>/img/delete.png"/>
+						<a onclick="deleteOne('${goods.id }')" target="_blank">
+							<img title="删除该商品" alt="" src="<%=basePath%>img/delete.png"/>
 						</a>
 					</td>
 				</tr>
