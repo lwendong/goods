@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface CartDao {
 	
 	public int focus(Map<String, Object> map);
+	public int nofocus(Map<String, Object> map);
 	
 	public List<Map<String, Object>> isFocus(Map<String, Object> map);
 	
