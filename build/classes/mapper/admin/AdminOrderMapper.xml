@@ -8,6 +8,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from `order` 
 	</select>
 	
+	<select id="orderInfoBypage"  resultType="map" parameterType="map">
+		select * from `order` order by time limit #{pageNo}, #{pageSize} 
+	</select>
+	
 	<delete id="deleteOrderBase" parameterType="String">
 		delete from `order` where id=#{id}
 	</delete>
