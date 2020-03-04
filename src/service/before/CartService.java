@@ -10,6 +10,8 @@ public interface CartService {
 	
 	public String focus(Model model,String goodsId, HttpSession session);
 	
+	public String nofocus(Model model,String goodsId, HttpSession session);
+	
 	public String putCart(Model model,Integer num, String goodsId, HttpSession session);
 	
 	public String selectCart(Model model, HttpSession session);
