@@ -37,6 +37,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update goods set popularity_num=popularity_num+1 where id=#{goodsId}
 	</update>
 	
+	<!-- 更更新商品库存 -->
+	<update id="updateGoodsInventory" parameterType="map">
+		update goods set inventory=inventory-#{num} where id=#{gid}
+	</update>
+	
+	<!-- 更新商品库存 -->
+	<update id="addGoodsInventory" parameterType="map">
+		update goods set inventory=inventory+#{num} where id=#{gid}
+	</update>
+	
 	<!-- 查询购物车 -->
 	<select id="selectCart" parameterType="String" resultType="map">
 		select o.id as id,g.id as goodsId,g.name as goodsName,g.description as goodsDescription,g.img as goodsImg,g.price as goodsPrice,o.time as orderTime,o.num as orderNum,o.num * o.due as smallsum from `order` o,goods g where o.user_id = #{userId} and o.goods_id = g.id and o.state = 0 

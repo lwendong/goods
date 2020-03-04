@@ -12,7 +12,7 @@ public class User implements Serializable{
 	private String password;
 	private String name;
 	private Boolean isGly;//是否管理员
-	
+	private int state;//是否被冻结
 	public String getId() {
 		return id;
 	}
@@ -51,6 +51,12 @@ public class User implements Serializable{
 	public String toString() {
 		return "Buser [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", isGly=" + isGly
 				+ "]";
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
 	}
 	
 }
