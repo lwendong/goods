@@ -9,58 +9,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <title>addGoods.jsp</title>
-<link href="css/admin/common.css" type="text/css" rel="stylesheet">
+<link href="css/admin/goodsdetail.css" type="text/css" rel="stylesheet">
 </head>    
 <body>
-	<form:form action="adminGoods/addGoods" method="post" modelAttribute="goods" enctype="multipart/form-data">
-		<table border=1 style="border-collapse: collapse">
-			<caption>
-				<font size=4 face=华文新魏>添加商品</font>
-			</caption>
+	<form:form action="admin/addAupGoods" method="post" modelAttribute="goods" enctype="multipart/form-data">
+		<table>
+			<h2>| 添加商品</h2>
+			<form:hidden path="id"/>
 			<tr>
-				<td>名称<font color="red">*</font></td>
-				<td>
-					<form:input path="gname"/>
+				<td class="one"><font color="red">*</font>名称:</td>
+				<td class="tow">
+					<form:input class="in" path="name"/>
 				</td>
 			</tr>
 			<tr>
-				<td>原价<font color="red">*</font></td>
-				<td>
-					<form:input path="goprice"/>
+				<td class="one"><font color="red">*</font>描述:</td>
+				<td class="tow">
+					<form:input class="in" path="description"/>
 				</td>
 			</tr>
 			<tr>
-				<td>折扣价</td>
-				<td>
-					<form:input path="grprice"/>
+				<td class="one"><font color="red">*</font>原价:</td>
+				<td class="tow">
+					<form:input class="in" path="price"/>
 				</td>
 			</tr>
 			<tr>
-				<td>库存</td>
-				<td>
-					<form:input path="gstore"/>
+				<td class="one"><font color="red">*</font>库存:</td>
+				<td class="tow">
+					<form:input class="in" path="inventory"/>
 				</td>
 			</tr>
 			<tr>
-				<td>图片</td>
-				<td>
-					<input type="file" name="logoImage"/>
+				<td class="one"><font color="red">*</font>图片:</td>
+				<td class="tow">
+					<input class="in" type="file" name="fil"/>
 				</td>
 			</tr>
 			<tr>
-				<td>类型</td>
-				<td>
-					<form:select path="goodstype_id">
-         				<form:options items="${goodsType }" itemLabel="typename" itemValue="id"/>
+				<td class="one"><font color="red">*</font>类型:</td>
+				<td class="tow">
+					<form:select class="in" path="typeCode">
+         				<form:options items="${goodsType}" itemLabel="name" itemValue="id"/>
    					</form:select>
 				</td>
-			</tr>
 			<tr>
-				<td align="center">
-					<input type="submit" value="提交"/>
+				<td class="one" align="center">
+					<input class="but1" type="submit" value="提交"/>
 				</td>
-				<td align="left">
-					<input type="reset" value="重置"/>
+				<td class="but" align="left">
+					<input class="but1" type="reset" value="重置"/>
 				</td>
 			</tr>
 		</table>
