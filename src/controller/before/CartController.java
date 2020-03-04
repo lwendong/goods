@@ -24,6 +24,15 @@ public class CartController extends BaseBeforeController{
 	public String focus(Model model,String goodsId, HttpSession session) {
 		return cartService.focus(model, goodsId, session);
 	}
+	
+	/**
+	 * 取消关注商品
+	 */
+	@RequestMapping("/nofocus")
+	public String nofocus(Model model,String goodsId, HttpSession session) {
+		return cartService.nofocus(model, goodsId, session);
+	}
+	
 	/**
 	 * 添加购物车
 	 */
