@@ -27,4 +27,18 @@ table tr{
 	border:0;
 	font-size:16px;
 }
+.add{
+	width: 100px;
+    height: 25px;
+    background-color: #62AAFF;
+    color: #fff;
+    border: 0;
+    font-size: 16px;
+    position: absolute;
+    top: 36px;
+    left: 1431px;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 3px;
+}
 
