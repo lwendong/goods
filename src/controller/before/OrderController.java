@@ -18,14 +18,7 @@ public class OrderController extends BaseBeforeController{
 	 * 提交订单
 	 */
 	@RequestMapping("/orderSubmit")
-	public String orderSubmit( HttpSession session) {
-		return orderService.orderSubmit( session);
-	}
-	/**
-	 * 支付订单
-	 */
-	@RequestMapping("/pay")
-	public String pay(HttpSession session) {
-		return orderService.pay(session);
+	public String orderSubmit(Model model, HttpSession session) {
+		return orderService.orderSubmit(session,model);
 	}
 }

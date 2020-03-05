@@ -38,6 +38,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 支付订单 -->
 	<update id="pay" parameterType="String">
-		update `order` set state = 1 where user_id = #{userId}
+		update `order` set order_code = #{orderCode},state = 1 where user_id = #{userId}
 	</update>
 </mapper>

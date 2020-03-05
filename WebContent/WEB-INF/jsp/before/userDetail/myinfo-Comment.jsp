@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%
 String path = request.getContextPath();
@@ -43,7 +45,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
           <td align="center" bgcolor="#ffffff">
             ${cb.comment}
           </td>
-          <td align="center" bgcolor="#ffffff">${cb.time} </td>
+          <td align="center" bgcolor="#ffffff"><fmt:formatDate value="${cb.time}" pattern="yyyy-MM-dd　HH:mm"/> </td>
         </tr>
    	  </c:forEach>  	
     </table>  

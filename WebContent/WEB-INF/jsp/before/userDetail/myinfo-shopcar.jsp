@@ -29,7 +29,7 @@ window.onload = function(){
 	debugger
 	$("#sr").css("display","none");
 	var list= '${cartlist}';
-	list = eval(list);
+	/* list = eval(list); */
 	if(list.length == 0){
 		/* $('tr').find('th:eq(0)').hide();  */
 		$("#mytable").hide();

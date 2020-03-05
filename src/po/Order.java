@@ -11,6 +11,7 @@ public class Order {
 	private Integer num;//订单商品数量
 	private Integer state;
 	private Date time;
+	private String orderCode;//支付后生成的订单号
 	
 	public String getId() {
 		return id;
@@ -59,6 +60,12 @@ public class Order {
 	}
 	public void setState(Integer state) {
 		this.state = state;
+	}
+	public String getOrderCode() {
+		return orderCode;
+	}
+	public void setOrderCode(String orderCode) {
+		this.orderCode = orderCode;
 	}
 	
 }

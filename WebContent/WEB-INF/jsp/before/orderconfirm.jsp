@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%
 String path = request.getContextPath();
@@ -24,7 +25,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
  <body>
 	<div class="nFlowBox">
   		<form action="" method="post">
-    		<h6><spring:message code="shopList"></spring:message></h6>
+    		<h2><spring:message code="shopList"></spring:message></h2>
             <table width="100%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
 	            <tr>
 	              <th bgcolor="#ffffff"><spring:message code="shopName"></spring:message></th>
@@ -43,13 +44,13 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 	              <td align="center" bgcolor="#ffffff">
 	                ${ce.orderNum}
 	              </td>
-	              <td align="center" bgcolor="#ffffff"><spring:message code="moneyMark"></spring:message>&nbsp;${ce.smallsum}&nbsp;<spring:message code="yuan"></spring:message></td>
+	              <td align="center" bgcolor="#ffffff"><spring:message code="moneyMark"></spring:message>&nbsp;<fmt:formatNumber value="${ce.smallsum}" pattern="#.##" minFractionDigits="2" > </fmt:formatNumber>&nbsp;<spring:message code="yuan"></spring:message></td>
 	            </tr>
 	       	  </c:forEach>
 	       	  	<tr>
 	       	  		<td class="td_right" colspan="4" align="right">
 	       	 			<spring:message code="due"></spring:message>
-	       	 			<font class="pricetype" size="5" color="red"><spring:message code="moneyMark"></spring:message>&nbsp;${total}&nbsp;<spring:message code="yuan"></spring:message></font>  	
+	       	 			<font class="pricetype" size="5" color="red"><spring:message code="moneyMark"></spring:message>&nbsp;<fmt:formatNumber value="${total}" pattern="#.##" minFractionDigits="2" > </fmt:formatNumber>&nbsp;<spring:message code="yuan"></spring:message></font>  	
 	              </td>
 	          </tr>   	
 	        </table>   
