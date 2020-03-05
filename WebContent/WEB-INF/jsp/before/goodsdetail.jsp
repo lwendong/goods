@@ -32,7 +32,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 			</div>
 			<div class="line"></div>
 			<div class="list_bottom_gd">
-				<form action="cart/putCart" name="putcartform" method="post">
+				<form name="putcartform" method="post">
 					<div class="goods">
 						<div class="goodsInfo">
 							<input type="hidden" name="goodsId" value="${goods.id }"/>
@@ -52,13 +52,13 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 									<li><span><spring:message code="type"></spring:message>:</span> ${goods.typeName }</li>
 									<li>
 										<span><spring:message code="Purchasequantity"></spring:message>:</span>
-										<input type="text" name="shoppingnum" class="good_txt" value="1" /> 
+										<input id="shopping" type="text" name="shoppingnum" class="good_txt" value="1" /> 
 										<span class="xj">(<spring:message code="inventory"></spring:message>${goods.inventory })</span>
 									</li>
 								</ul>
 							
 								<p class="bottom10 top5">
-									<img src="img/putcart.png" style="cursor: pointer" onclick="goCart(${goods.id})" />
+									<img src="img/putcart.png" style="cursor: pointer" onclick="goCart('${goods.id}')" />
 									<span class="xj"><< <spring:message code="Clickaddcart"></spring:message>&nbsp;&nbsp;</span>
 									<c:if test="${isFocus==1}">
 										<input type="button" style="cursor: pointer" class="bnt2" 
@@ -95,10 +95,20 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 		</div>
 	</div>
 	<script type="text/javascript">
-	function goCart() {
+	function goCart(id) {
 		debugger
 		sessionStorage.setItem("jump", "cart");
-		document.putcartform.submit();
+		var snum = $("#shopping").val();
+		var inve = '${goods.inventory }';
+		if(snum > inve){
+			alert("商品库存不够");
+		}else if(snum < 0 || snum == 0){
+			alert("购买数量不能为负和0");
+		}else{
+			document.putcartform.action="/shop/cart/putCart?shoppingnum="+snum;
+			document.putcartform.submit();
+		}
+		
 	}
 	function gofocus(gno) {
 		window.location.href = "/shop/cart/focus?goodsId=" + gno;

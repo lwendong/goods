@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%
 String path = request.getContextPath();
@@ -69,13 +70,13 @@ window.onload = function(){
 						<a class="a_text" href="goodsDetail?id=${ce.goodsId}" class="f6">${ce.goodsName}</a>
 					</td>
 					<td class="goods_info_115" >
-						<span>${ce.goodsPrice}</span>
+						<span><fmt:formatNumber value="${ce.goodsPrice}" pattern="#.##" minFractionDigits="2" > </fmt:formatNumber></span>
 					</td>
 					<td class="goods_info_115" >
 						${ce.orderNum}
 					</td>
 					<td class="goods_info_115">
-						￥&nbsp;<span>${ce.smallsum}</span>&nbsp;
+						￥&nbsp;<span><fmt:formatNumber value="${ce.smallsum}" pattern="#.##" minFractionDigits="2" > </fmt:formatNumber></span>&nbsp;
 					</td>
 					<td class="goods_info_185">
 						<a class="a_text" style="text-decoration: none;" href="/shop/cart/deleteAgoods?id=${ce.goodsId}&num=${ce.orderNum}" onClick="return confirm('确定删除?');" title="删除">

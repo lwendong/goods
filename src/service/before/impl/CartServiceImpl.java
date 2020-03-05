@@ -50,7 +50,7 @@ public class CartServiceImpl implements CartService{
 	public String putCart(Model model, Integer num, String goodsId, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Goods goods = indexDao.selectGoodsById(goodsId);
-		map.put("price", goods.getPrice());
+		map.put("price", goods.getPrice()*num);
 		map.put("uid", MyUtil.getUserId(session));
 		map.put("gid", goodsId);
 		map.put("id", MyUtil.getUUID());
@@ -64,7 +64,6 @@ public class CartServiceImpl implements CartService{
 		}
 		//减去商品库存
 		cartDao.updateGoodsInventory(map);
-		model.addAttribute("jump", "cart");
 		return "before/userControllerCenter";
 	}
 	public String selectCart(Model model, HttpSession session) {
@@ -73,7 +72,9 @@ public class CartServiceImpl implements CartService{
 		for (Map<String, Object> map : list) {
 			sum = sum + (Double)map.get("smallsum");
 		}
-		model.addAttribute("total", sum);
+		//页面显示的数太大的时候，double不用科学计数法
+		java.text.DecimalFormat df = new java.text.DecimalFormat("########.00");
+		model.addAttribute("total", df.format(sum));
 		model.addAttribute("cartlist", list);
 		return "before/userDetail/myinfo-shopcar";
 	}

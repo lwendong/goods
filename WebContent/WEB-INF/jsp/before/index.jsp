@@ -45,7 +45,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 								<li class="goods_naAndPri">
 									<div class="hi"><p><a href="goodsDetail?id=${sg.id }" >${sg.name }</a></p>
 									</div>
-									 <spring:message code="price"></spring:message>：<font class="f1"><spring:message code="moneyMark"></spring:message>${sg.price }<spring:message code="yuan"></spring:message></font>
+									 <spring:message code="price"></spring:message>：<div class="f1"><spring:message code="moneyMark"></spring:message>${sg.price }<spring:message code="yuan"></spring:message></div>
 								 </li>
 							</ul>
 						</c:forEach>
@@ -63,7 +63,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 									<img title="${sg.description }" class="samllimg" alt="" src="<%=imgPath%>/img/up/${sg.img}" /></a></li>
 								<li class="goods_naAndPri">
 								<div class="hi"><p><a href="goodsDetail?id=${sg.id }">${sg.name }</a></p></div>
-								 <div class="f1"><spring:message code="price"></spring:message>：<spring:message code="moneyMark"></spring:message>${sg.price }<spring:message code="yuan"></spring:message></div>><br /></li>
+								<spring:message code="price"></spring:message>： <div class="f1"><spring:message code="moneyMark"></spring:message>${sg.price }<spring:message code="yuan"></spring:message></div><br /></li>
 							</ul>
 						</c:forEach>
 					</div>
@@ -90,7 +90,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 											<div class="hi">
 												<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
 											</div></br>
-											<p><em><spring:message code="presentPrice"></spring:message>:<spring:message code="moneyMark"></spring:message>${sg.price}</em></p>
+											<p><em class="f1"><spring:message code="presentPrice"></spring:message>:<spring:message code="moneyMark"></spring:message>${sg.price}</em></p>
 										</p>
 									</div>
 								</li>

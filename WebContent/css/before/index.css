@@ -56,7 +56,7 @@
 }
 .f1{
 	color: #FF2832;
-	width:10px;
+	width:77px;
 	white-space:nowrap;/*规定段落中的文本不进行换行*/
 	overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
 	text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
@@ -151,6 +151,7 @@
 }
 
 .hi{
+	width:74px;
 	white-space:nowrap;/*规定段落中的文本不进行换行*/
 	overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
 	text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
