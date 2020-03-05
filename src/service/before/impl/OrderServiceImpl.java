@@ -22,6 +22,7 @@ public class OrderServiceImpl implements OrderService{
 		List<Order> list = orderDao.selectGoodsByUserId(userId);
 		for(Order o:list) {
 			o.setOrderCode(orderCode);
+			orderDao.pay(userId, orderCode);
 		}
 		orderDao.updateGoodsSellNum(list);
 		model.addAttribute("oCode", orderCode);

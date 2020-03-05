@@ -18,7 +18,7 @@ public interface OrderDao {
 	
 	public int updateGoodsSellNum(@Param("list")List<Order> list);
 	
-	public int pay(String userId,String orderCode);
+	public int pay(@Param("userId") String userId,@Param("orderCode") String orderCode);
 	
 	public List<Order> selectGoodsByUserId(@Param("userId")String userId);
 }
