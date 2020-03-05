@@ -30,7 +30,7 @@
 }
 .list_li{
 	float: left;
-	height:50px;
+	height:35px;
 	width: 150px;
 	font-size:18px;
 	text-align: center;
@@ -42,4 +42,12 @@
 .list-top ul li a:link,.list-top ul li a:visited{
 	color: #fff;
 	text-decoration: none;
+}
+.order_list{
+	height:220px; 
+	overflow-y:scroll;
+}
+.nFlowBox{
+	height:414px; 
+	overflow-y:scroll;
 }
