@@ -23,7 +23,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 	<legend>
 		<span>我的评论</span>
 	</legend>
-	<table width="100%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+	<table height="220px" class="comment_table" width="100%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
         <tr>
           <th bgcolor="#ffffff"><spring:message code="oparetion"></spring:message></th>
           <th bgcolor="#ffffff"><spring:message code="commentId"></spring:message></th>

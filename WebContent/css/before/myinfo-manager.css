@@ -42,3 +42,7 @@
 	 word-break: break-all;
 	 white-space: normal;
 }
+.comment_table{
+	overflow-y:scroll;
+}
+
