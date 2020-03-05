@@ -17,10 +17,98 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 <script src="<%=path%>/jquery/jquery.min.js"></script>
 <link href="<%=path%>/css/before/usercontroller.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/before/goodsdetail.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-	function goCart() {
+
+</head>
+<body>
+<div class="list">
+		<div class="list-group">
+			<!--用户中心左侧导航 start-->
+			<div class="list-top">
+				<ul class="goods_deta">
+					<li class="list_return"><a href="before"><img alt="" src="img/return1.png"></a></li>
+					<li class="list_li" color="#fff"><spring:message code="goodsDetail"></spring:message></li>
+				</ul>
+				
+			</div>
+			<div class="line"></div>
+			<div class="list_bottom_gd">
+				<form name="putcartform" method="post">
+					<div class="goods">
+						<div class="goodsInfo">
+							<input type="hidden" name="goodsId" value="${goods.id }"/>
+							<img src="<%=imgPath%>img/up/${goods.img}" width="230px" height="230px" />
+						</div>
+						<!--商品表述-->
+						<div class="goods_desc">
+							<div class="name">
+								<h2>${goods.name }</h2>
+							</div>
+							<div class="goods_show">
+								<ul>
+									<li><span><spring:message code="price"></spring:message>:</span> <strong class="xj">${goods.price }</strong> <spring:message code="yuan"></spring:message></li>
+									<li><span><spring:message code="discount"></spring:message>:</span>
+										<strong class="xj">${goods.price } </strong><spring:message code="yuan"></spring:message>
+									</li>
+									<li><span><spring:message code="type"></spring:message>:</span> ${goods.typeName }</li>
+									<li>
+										<span><spring:message code="Purchasequantity"></spring:message>:</span>
+										<input id="shopping" type="text" name="shoppingnum" class="good_txt" value="1" /> 
+										<span class="xj">(<spring:message code="inventory"></spring:message>${goods.inventory })</span>
+									</li>
+								</ul>
+							
+								<p class="bottom10 top5">
+									<img src="img/putcart.png" style="cursor: pointer" onclick="goCart('${goods.id}')" />
+									<span class="xj"><< <spring:message code="Clickaddcart"></spring:message>&nbsp;&nbsp;</span>
+									<c:if test="${isFocus==1}">
+										<input type="button" style="cursor: pointer" class="bnt2" 
+											onclick="gofocus('${goods.id }')" value="<spring:message code="FocusonYes"></spring:message>"  disabled="disabled"/>
+									</c:if>
+									<c:if test="${isFocus!=1}"><!-- <a href="toLogin"></a> -->
+										<input type="button" style="cursor: pointer" class="bnt2" 
+										onclick="gofocus('${goods.id }')" value="<spring:message code="Focuson"></spring:message>" />
+												
+									</c:if>
+									
+								</p>${de}
+							</div>
+						</div>
+						<!--end-->
+					</div>  
+				</form>
+				<div class="container">
+					<div class="goods_com"><spring:message code="Productevaluation"></spring:message></div>
+   					<c:forEach items="${commentVoBeanList}" var="comment" varStatus="status">
+	                    <div class="media">
+                             <h3 class="media-heading">${comment.name}</h3>
+                             <p class="middle"><spring:message code="comment"></spring:message>：${comment.comment}</p>
+                             <p>${status.index+1}<spring:message code="tower"></spring:message>&nbsp;&nbsp;
+                             	<fmt:formatDate value="${ comment.time }" pattern="yyyy-MM-dd　HH:mm"/> <spring:message code="published"></spring:message>
+                       		 </p>
+	                    </div>
+	                </c:forEach>
+	                <div class="write"><spring:message code="Writeacomment"></spring:message></div>
+	                <textarea class="com_text" id="textareaComment" rows="3" name="textarea"></textarea>
+	                <button class="bnt" id="submit-info-btn" onclick="submitInfo()"><spring:message code="comment"></spring:message></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	function goCart(id) {
+		debugger
 		sessionStorage.setItem("jump", "cart");
-		document.putcartform.submit();
+		var snum = $("#shopping").val();
+		var inve = '${goods.inventory }';
+		if(snum > inve){
+			alert("商品库存不够");
+		}else if(snum < 0 || snum == 0){
+			alert("购买数量不能为负和0");
+		}else{
+			document.putcartform.action="/shop/cart/putCart?shoppingnum="+snum;
+			document.putcartform.submit();
+		}
+		
 	}
 	function gofocus(gno) {
 		window.location.href = "/shop/cart/focus?goodsId=" + gno;
@@ -58,81 +146,5 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 		}
 	}
 </script>
-</head>
-<body>
-<div class="list">
-		<div class="list-group">
-			<!--用户中心左侧导航 start-->
-			<div class="list-top">
-				<ul class="goods_deta">
-					<li class="list_return"><a href="before"><img alt="" src="img/return1.png"></a></li>
-					<li class="list_li" color="#fff"><spring:message code="goodsDetail"></spring:message></li>
-				</ul>
-				
-			</div>
-			<div class="line"></div>
-			<div class="list_bottom_gd">
-				<form action="cart/putCart" name="putcartform" method="post">
-					<div class="goods">
-						<div class="goodsInfo">
-							<input type="hidden" name="goodsId" value="${goods.id }"/>
-							<img src="<%=imgPath%>/img/up/${goods.img}" width="230px" height="230px" />
-						</div>
-						<!--商品表述-->
-						<div class="goods_desc">
-							<div class="name">
-								<h2>${goods.name }</h2>
-							</div>
-							<div class="goods_show">
-								<ul>
-									<li><span><spring:message code="price"></spring:message>:</span> <strong class="xj">${goods.price }</strong> <spring:message code="yuan"></spring:message></li>
-									<li><span><spring:message code="discount"></spring:message>:</span>
-										<strong class="xj">${goods.price } </strong><spring:message code="yuan"></spring:message>
-									</li>
-									<li><span><spring:message code="type"></spring:message>:</span> ${goods.typeName }</li>
-									<li>
-										<span><spring:message code="Purchasequantity"></spring:message>:</span>
-										<input type="text" name="shoppingnum" class="good_txt" value="1" /> 
-										<span class="xj">(<spring:message code="inventory"></spring:message>${goods.inventory })</span>
-									</li>
-								</ul>
-							
-								<p class="bottom10 top5">
-									<img src="img/putcart.png" style="cursor: pointer" onclick="goCart(${goods.id})" />
-									<span class="xj"><< <spring:message code="Clickaddcart"></spring:message>&nbsp;&nbsp;</span>
-									<c:if test="${isFocus==1}">
-										<input type="button" style="cursor: pointer" class="bnt2" 
-											onclick="gofocus('${goods.id }')" value="<spring:message code="FocusonYes"></spring:message>"  disabled="disabled"/>
-									</c:if>
-									<c:if test="${isFocus!=1}"><!-- <a href="toLogin"></a> -->
-										<input type="button" style="cursor: pointer" class="bnt2" 
-										onclick="gofocus('${goods.id }')" value="<spring:message code="Focuson"></spring:message>" />
-												
-									</c:if>
-									
-								</p>${msg }
-							</div>
-						</div>
-						<!--end-->
-					</div>  
-				</form>
-				<div class="container">
-					<div class="goods_com"><spring:message code="Productevaluation"></spring:message></div>
-   					<c:forEach items="${commentVoBeanList}" var="comment" varStatus="status">
-	                    <div class="media">
-                             <h3 class="media-heading">${comment.name}</h3>
-                             <p class="middle"><spring:message code="comment"></spring:message>：${comment.comment}</p>
-                             <p>${status.index+1}<spring:message code="tower"></spring:message>&nbsp;&nbsp;
-                             	<fmt:formatDate value="${ comment.time }" pattern="yyyy-MM-dd　HH:mm"/> <spring:message code="published"></spring:message>
-                       		 </p>
-	                    </div>
-	                </c:forEach>
-	                <div class="write"><spring:message code="Writeacomment"></spring:message></div>
-	                <textarea class="com_text" id="textareaComment" rows="3" name="textarea"></textarea>
-	                <button class="bnt" id="submit-info-btn" onclick="submitInfo()"><spring:message code="comment"></spring:message></button>
-				</div>
-			</div>
-		</div>
-	</div>
 </body>
 </html>

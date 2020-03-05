@@ -10,25 +10,13 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 <html>
 <head>
 <title><spring:message code='orderSuccess'></spring:message></title>
-	<script type="text/javascript">
-		//确定按钮
-		function gogo(){
-			document.payForm.submit();
-		}
-	</script>
 </head>
 <body>
 <div class="nFlowBox">
    <h2 style="text-align:center; height:30px; line-height:30px;">
    		<spring:message code="successMessage"></spring:message>:
-   		<font style="color:red" size='5'>${ordersn}</font>
-   </h2><br/>
-   <center>
-	   <form action="order/pay" method="post" name="payForm">
-        	<input type="hidden" name="ordersn" value="${ordersn}"/>
-        	<input type="image" src="images/before/Chinapay_logo.jpg" onclick="gogo()"/>
-	   </form>
-   </center>
+   		<font style="color:red" size='5'>${oCode}</font>
+   </h2>
 </div>
  </body>
 </html>

@@ -1,5 +1,7 @@
 package controller.before;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +31,9 @@ public class CartController extends BaseBeforeController{
 	 * 取消关注商品
 	 */
 	@RequestMapping("/nofocus")
-	public String nofocus(Model model,String goodsId, HttpSession session) {
-		return cartService.nofocus(model, goodsId, session);
+	public Map<String, Object> nofocus(Model model,String goodsId, HttpSession session) {
+		Map<String, Object> nofocus = cartService.nofocus(model, goodsId, session);
+		return nofocus;
 	}
 	
 	/**

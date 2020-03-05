@@ -35,14 +35,14 @@ public class CartServiceImpl implements CartService{
 		map.put("id", MyUtil.getUUID());
 		List<Map<String, Object>> list = cartDao.isFocus(map);
 		if(list.size() > 0) {
-			model.addAttribute("msg", "已关注该商品！");
+			model.addAttribute("de", "已关注该商品！");
 		}else {
 			int n = cartDao.focus(map);
 			if(n > 0) {
 				cartDao.updateGoodsPopularityNum(goodsId);
-				model.addAttribute("msg", "成功关注该商品！");
+				model.addAttribute("de", "成功关注该商品！");
 			}else {
-				model.addAttribute("msg", "关注失败！");
+				model.addAttribute("de", "关注失败！");
 			}
 		}
 		return "forward:/goodsDetail?id=" + goodsId;
@@ -50,7 +50,7 @@ public class CartServiceImpl implements CartService{
 	public String putCart(Model model, Integer num, String goodsId, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Goods goods = indexDao.selectGoodsById(goodsId);
-		map.put("price", goods.getPrice());
+		map.put("price", goods.getPrice()*num);
 		map.put("uid", MyUtil.getUserId(session));
 		map.put("gid", goodsId);
 		map.put("id", MyUtil.getUUID());
@@ -64,7 +64,6 @@ public class CartServiceImpl implements CartService{
 		}
 		//减去商品库存
 		cartDao.updateGoodsInventory(map);
-		model.addAttribute("jump", "cart");
 		return "before/userControllerCenter";
 	}
 	public String selectCart(Model model, HttpSession session) {
@@ -73,7 +72,9 @@ public class CartServiceImpl implements CartService{
 		for (Map<String, Object> map : list) {
 			sum = sum + (Double)map.get("smallsum");
 		}
-		model.addAttribute("total", sum);
+		//页面显示的数太大的时候，double不用科学计数法
+		java.text.DecimalFormat df = new java.text.DecimalFormat("########.00");
+		model.addAttribute("total", df.format(sum));
 		model.addAttribute("cartlist", list);
 		return "before/userDetail/myinfo-shopcar";
 	}
@@ -105,12 +106,14 @@ public class CartServiceImpl implements CartService{
 		return "before/orderconfirm";
 	}
 	@Override
-	public String nofocus(Model model, String goodsId, HttpSession session) {
+	public Map<String, Object> nofocus(Model model, String goodsId, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map1 = new HashMap<String, Object>();
 		map.put("uid", MyUtil.getUserId(session));
 		map.put("gid", goodsId);
 		cartDao.nofocus(map);
-		return "myinfoManager";
+		map1.put("message", "取消成功");
+		return map1;
 	}
 	
 }

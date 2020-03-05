@@ -27,14 +27,14 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 								<div>
 									<p class="pic">
 										<a href="goodsDetail?id=${sg.id }">
-											<img title="${sg.description}" src="<%=imgPath%>/img/up/${sg.img}" />
+											<img class="new_show" title="${sg.description}" src="<%=imgPath%>/img/up/${sg.img}" />
 										</a>
 									</p>
 									<p class="wz">
 										<div class="hi">
 											<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
 										</div></br>
-										<p><em><spring:message code="presentPrice"></spring:message>:<spring:message code="moneyMark"></spring:message>${sg.price}</em></p>
+										<p><div class="hi"><em><spring:message code="presentPrice"></spring:message>:<spring:message code="moneyMark"></spring:message>${sg.price}</em></div></p>
 									</p>
 								</div>
 							</li>

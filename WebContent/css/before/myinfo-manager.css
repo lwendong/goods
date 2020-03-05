@@ -36,3 +36,9 @@
 	font-size:16px;
 	border:none;
 }
+
+/*评论  过长 自动换行*/
+.c{
+	 word-break: break-all;
+	 white-space: normal;
+}
