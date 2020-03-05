@@ -43,7 +43,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
           	${cb.goodsName}
           </td>
           <td align="center" bgcolor="#ffffff">
-            ${cb.comment}
+            <span class="c">${cb.comment}</span>
           </td>
           <td align="center" bgcolor="#ffffff"><fmt:formatDate value="${cb.time}" pattern="yyyy-MM-dd　HH:mm"/> </td>
         </tr>
