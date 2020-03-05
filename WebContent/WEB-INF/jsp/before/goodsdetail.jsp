@@ -70,7 +70,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 												
 									</c:if>
 									
-								</p>${msg }
+								</p>${de}
 							</div>
 						</div>
 						<!--end-->

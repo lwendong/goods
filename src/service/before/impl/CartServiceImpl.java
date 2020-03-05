@@ -35,14 +35,14 @@ public class CartServiceImpl implements CartService{
 		map.put("id", MyUtil.getUUID());
 		List<Map<String, Object>> list = cartDao.isFocus(map);
 		if(list.size() > 0) {
-			model.addAttribute("msg", "已关注该商品！");
+			model.addAttribute("de", "已关注该商品！");
 		}else {
 			int n = cartDao.focus(map);
 			if(n > 0) {
 				cartDao.updateGoodsPopularityNum(goodsId);
-				model.addAttribute("msg", "成功关注该商品！");
+				model.addAttribute("de", "成功关注该商品！");
 			}else {
-				model.addAttribute("msg", "关注失败！");
+				model.addAttribute("de", "关注失败！");
 			}
 		}
 		return "forward:/goodsDetail?id=" + goodsId;
