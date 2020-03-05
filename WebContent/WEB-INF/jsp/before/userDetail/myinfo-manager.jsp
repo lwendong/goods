@@ -14,13 +14,11 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="<%=path%>/jquery/jquery.min.js"></script>
 <link href="<%=path%>/css/before/myinfo-manager.css" rel="stylesheet" type="text/css" />
 <title>我的信息</title>
-
+<script src="<%=path%>/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 var baselocation='<%=basePath%>';
-var bruser='${bruser}';
 </script>
 </head>
 <body>

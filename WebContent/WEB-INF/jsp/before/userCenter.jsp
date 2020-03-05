@@ -11,6 +11,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 <head>
 <title><spring:message code='userCenter'></spring:message></title>
 <link href="<%=path%>/css/before/usercontroller.css" rel="stylesheet" type="text/css" />
+<script src="<%=path%>/jquery/jquery.min.js"></script>
 </head>
 <body>
 	<div class="user_center">
