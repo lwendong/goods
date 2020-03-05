@@ -61,7 +61,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 									<img src="img/putcart.png" style="cursor: pointer" onclick="goCart('${goods.id}')" />
 									<span class="xj"><< <spring:message code="Clickaddcart"></spring:message>&nbsp;&nbsp;</span>
 									<c:if test="${isFocus==1}">
-										<input type="button" style="cursor: pointer" class="bnt2" 
+										<input type="button" style="cursor: default" class="bnt2" 
 											onclick="gofocus('${goods.id }')" value="<spring:message code="FocusonYes"></spring:message>"  disabled="disabled"/>
 									</c:if>
 									<c:if test="${isFocus!=1}"><!-- <a href="toLogin"></a> -->
