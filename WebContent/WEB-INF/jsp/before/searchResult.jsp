@@ -15,9 +15,10 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 <script src="<%=path%>/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 window.onload = function(){
+	debugger
 	$("#sr").css("display","none");
 	var list= '${searchlist}';
-	list.replace("[]","");
+	list = list.replace("[]","");
 	if(list.length == 0){
 		$('tr').find('th:eq(0)').hide(); 
 		$("#myTable").hide();
